@@ -8,7 +8,7 @@ class RoomsView extends GetView<RoomsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
+        title: const Text('Комнаты'),
         centerTitle: true,
       ),
       body: const Text('rfcr')

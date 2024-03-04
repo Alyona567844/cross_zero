@@ -12,7 +12,10 @@ class HomeView extends GetView<HomeController> {
       appBar: AppBar(
         title: const Text(
           'Добро пожаловать',
-          style: TextStyle(color: Color.fromARGB(255, 193, 150, 21)),
+          style: TextStyle(
+            color: Color.fromARGB(255, 193, 150, 21),
+            fontSize: 22,
+          ),
         ),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 16, 16, 16),
@@ -23,19 +26,22 @@ class HomeView extends GetView<HomeController> {
           const Text(
             'Введите никнейм',
             style: TextStyle(
-                color: Color.fromARGB(255, 193, 150, 21), fontSize: 20),
+                color: Color.fromARGB(255, 193, 150, 21), fontSize: 25),
           ),
           const SizedBox(
             height: 20,
           ),
-          TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
               ),
+              controller: controller.textFieldCtlr,
+              style: const TextStyle(color: Color.fromARGB(255, 193, 150, 21)),
             ),
-            controller: controller.textFieldCtlr,
-            style: const TextStyle(color: Color.fromARGB(255, 193, 150, 21)),
           ),
           const SizedBox(
             height: 20,
@@ -49,6 +55,7 @@ class HomeView extends GetView<HomeController> {
               'Войти',
               style: TextStyle(
                 color: Colors.black,
+                fontSize: 20,
               ),
             ),
           ),

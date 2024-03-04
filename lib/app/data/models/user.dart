@@ -8,7 +8,7 @@ class User with _$User {
 
   factory User({
     required String username,
-    required String in_session,
+    required String? in_session,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

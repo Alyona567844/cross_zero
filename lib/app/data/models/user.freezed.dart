@@ -21,7 +21,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   String get username => throw _privateConstructorUsedError;
-  String get in_session => throw _privateConstructorUsedError;
+  String? get in_session => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String username, String in_session});
+  $Res call({String username, String? in_session});
 }
 
 /// @nodoc
@@ -50,17 +50,17 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? username = null,
-    Object? in_session = null,
+    Object? in_session = freezed,
   }) {
     return _then(_value.copyWith(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      in_session: null == in_session
+      in_session: freezed == in_session
           ? _value.in_session
           : in_session // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -72,7 +72,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String username, String in_session});
+  $Res call({String username, String? in_session});
 }
 
 /// @nodoc
@@ -86,17 +86,17 @@ class __$$UserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? username = null,
-    Object? in_session = null,
+    Object? in_session = freezed,
   }) {
     return _then(_$UserImpl(
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String,
-      in_session: null == in_session
+      in_session: freezed == in_session
           ? _value.in_session
           : in_session // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -112,7 +112,7 @@ class _$UserImpl implements _User {
   @override
   final String username;
   @override
-  final String in_session;
+  final String? in_session;
 
   @override
   String toString() {
@@ -151,14 +151,14 @@ class _$UserImpl implements _User {
 abstract class _User implements User {
   factory _User(
       {required final String username,
-      required final String in_session}) = _$UserImpl;
+      required final String? in_session}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
   @override
   String get username;
   @override
-  String get in_session;
+  String? get in_session;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>
