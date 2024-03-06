@@ -1,4 +1,5 @@
 import 'package:cross_zero/app/data/models/new_user.dart';
+import 'package:cross_zero/app/data/models/session.dart/newSession.dart';
 import 'package:cross_zero/app/routes/app_pages.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
@@ -35,4 +36,17 @@ class NetworkService extends GetxService {
       return false;
     }
   }
+
+  // Future<bool> createSession(String roomName) async {
+  //   try{
+  //     var response = await client.post("session/create/$roomName");
+  //     var newSession = NewSession.fromJson(response.data);
+  //     print(newSession);
+  //     await storage.writeSessionData(newSession);
+  //     return true;
+  //   } catch(e) {
+  //     print(e);
+  //     return false;
+  //   }
+  // }
 }

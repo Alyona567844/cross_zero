@@ -1,6 +1,7 @@
 // import 'dart:convert';
 
 import 'package:cross_zero/app/data/models/new_user.dart';
+import 'package:cross_zero/app/data/models/session.dart/newSession.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -27,4 +28,9 @@ class StorageService extends GetxService {
       box.write('userData', data.toJson());
 
   NewUser? readUserData() => box.read('userData');
+
+  // Future<void> writeSessionData(NewSession data) =>
+  //     box.write('sessionData', data.toJson());
+
+  // NewSession? readSessionData() => box.read('sessionData');
 }
