@@ -10,6 +10,7 @@ class NetworkService extends GetxService {
   var storage = Get.find<StorageService>();
   var client = Dio(BaseOptions(baseUrl: 'https://ttt.bulbaman.me/'));
   NewUser? user;
+  final getHeader = ''.obs;
 
   Future<NetworkService> init() async {
     await readPrefs();
@@ -30,23 +31,25 @@ class NetworkService extends GetxService {
       var newUser = NewUser.fromJson(response.data);
       print(newUser);
       await storage.writeUserData(newUser);
+      getHeader.value = newUser.authHeader;
       return true;
     } catch (e) {
       print(e);
       return false;
     }
   }
-
-  // Future<bool> createSession(String roomName) async {
-  //   try{
-  //     var response = await client.post("session/create/$roomName");
-  //     var newSession = NewSession.fromJson(response.data);
-  //     print(newSession);
-  //     await storage.writeSessionData(newSession);
-  //     return true;
-  //   } catch(e) {
-  //     print(e);
-  //     return false;
-  //   }
-  // }
+  
+  Future<bool> createSession(String roomName) async {
+    try {
+      var response = await client.post("session/create/$roomName",
+          options: Options(headers: {'authorization': getHeader.value}));
+      var newSession = NewSession.fromJson(response.data);
+      print(newSession);
+      await storage.writeSessionData(newSession);
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
 }

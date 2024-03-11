@@ -96,7 +96,7 @@ class RoomsView extends GetView<RoomsController> {
                       Color.fromARGB(255, 193, 150, 21),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {controller.createRoom();},
                   child: const Text(
                     'Создать',
                     style: TextStyle(

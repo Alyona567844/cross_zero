@@ -7,18 +7,18 @@ import '../../routes/app_pages.dart';
 class RoomsController extends GetxController {
   final _networkService = Get.find<NetworkService>();
   var textFieldCtrl = TextEditingController();
-  // Future<void> createRoom() async {
-  //   String roomName = textFieldCtrl.text;
-  //   var createResult = await _networkService.createSession(roomName);
-  //   if (!createResult) {
-  //     Get.snackbar(
-  //       'Error',
-  //       'Не удалось создать комнату',
-  //     );
-  //   } else {
-  //     Get.offAndToNamed(Routes.PLAY);
-  //   }
-  //   // print(roomName);
-  // }
+  Future<void> createRoom() async {
+    String roomName = textFieldCtrl.text;
+    var createResult = await _networkService.createSession(roomName);
+    if (!createResult) {
+      Get.snackbar(
+        'Error',
+        'Не удалось создать комнату',
+      );
+    } else {
+      Get.offAndToNamed(Routes.PLAY);
+    }
+    // print(roomName);
+  }
   
 }

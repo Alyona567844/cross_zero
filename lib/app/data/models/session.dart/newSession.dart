@@ -1,4 +1,3 @@
-import 'package:cross_zero/app/data/models/session.dart/board.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'newSession.freezed.dart';
@@ -8,12 +7,12 @@ part 'newSession.g.dart';
 class NewSession with _$NewSession {
 
   factory NewSession({
-    required Board board,
+    required Map<String, dynamic> board,
     required String game_state,
     required String? guest_name,
-    required String history,
-    required int host_name,
-    required int id,
+    required List<dynamic> history,
+    required String host_name,
+    required String id,
     required String name,
   }) = _NewSession;
 
