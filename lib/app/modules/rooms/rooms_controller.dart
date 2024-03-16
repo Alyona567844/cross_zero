@@ -1,3 +1,4 @@
+import 'package:cross_zero/app/data/models/session.dart/newSession.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +20,12 @@ class RoomsController extends GetxController {
       Get.offAndToNamed(Routes.PLAY);
     }
     // print(roomName);
+  }
+
+  RxList<NewSession> newSession = <NewSession>[].obs;
+
+  void getRooms() async {
+    newSession.value = await _networkService.getRooms();
   }
   
 }
