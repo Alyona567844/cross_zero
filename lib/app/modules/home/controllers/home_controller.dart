@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+
   var textFieldCtlr = TextEditingController();
   final _networkService = Get.find<NetworkService>();
+
   Future<void> auth() async {
     String nickname = textFieldCtlr.text;
     var regResult = await _networkService.registration(nickname);
     if (!regResult) {
       Get.snackbar(
-        'Error',
+        'Ошибка',
         'Не удалось зарегистрироваться',
       );
     } else {

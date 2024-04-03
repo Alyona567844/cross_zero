@@ -16,53 +16,79 @@ class RoomsView extends GetView<RoomsController> {
             fontSize: 22,
           ),
         ),
+        // leading: IconButton(
+        //     onPressed: () => controller.changeNick,
+        //     icon: const Icon(Icons.safety_check)),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 16, 16, 16),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            ElevatedButton(
-              style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll<Color>(
-                  Color.fromARGB(255, 16, 16, 16),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              child: ElevatedButton(
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll<Color>(
+                    Color.fromARGB(255, 16, 16, 16),
+                  ),
                 ),
-              ),
-              onPressed: () {
-                dialog(context);
-              },
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Row(
-                  children: [
-                    Text(
-                      'Создать комнату',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 193, 150, 21),
-                        fontSize: 20,
+                onPressed: () {
+                  dialog(context);
+                },
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Создать комнату',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 193, 150, 21),
+                          // fontSize: 20,
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 10),
-                    Icon(Icons.create, color: Color.fromARGB(255, 29, 94, 14)),
-                  ],
+                      SizedBox(width: 10),
+                      Icon(Icons.create,
+                          color: Color.fromARGB(255, 29, 94, 14)),
+                    ],
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 10),
             ElevatedButton(
+              style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(
+                      Color.fromARGB(255, 16, 16, 16))),
               onPressed: () => controller.getRooms(),
-              child: const Text('Просмотреть комнаты'),
+              child: const Text(
+                'Просмотреть комнаты',
+                style: TextStyle(color: Color.fromARGB(255, 193, 150, 21)),
+              ),
             ),
             Obx(
-              () => ListView.builder(
+              () => ListView.separated(
+                separatorBuilder: (context, index) => const Divider(
+                  height: 5.0,
+                  color: Color.fromARGB(255, 193, 150, 21),
+                ),
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.newSession.length,
                 itemBuilder: (context, index) {
                   final session = controller.newSession[index];
                   return ListTile(
-                    title: Text(session.name),
-                    trailing: Text(session.game_state),
+                    title: Text(
+                      session.name,
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 193, 150, 21)),
+                    ),
+                    trailing: Text(
+                      session.game_state,
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 193, 150, 21)),
+                    ),
                   );
                 },
               ),
@@ -97,10 +123,16 @@ class RoomsView extends GetView<RoomsController> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextField(
+                    cursorColor: const Color.fromARGB(255, 193, 150, 21),
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 193, 150, 21))),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 193, 150, 21))),
                     ),
                     controller: controller.textFieldCtrl,
                     style: const TextStyle(
@@ -118,11 +150,12 @@ class RoomsView extends GetView<RoomsController> {
                   ),
                   onPressed: () {
                     controller.createRoom();
+                    Navigator.of(context).pop();
                   },
                   child: const Text(
                     'Создать',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Color.fromARGB(255, 29, 94, 14),
                       fontSize: 20,
                     ),
                   ),

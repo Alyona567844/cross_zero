@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
+import '../modules/game/bindings/game_binding.dart';
+import '../modules/game/views/game_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/play/bindings/play_binding.dart';
-import '../modules/play/views/play_view.dart';
 import '../modules/rooms/rooms_binding.dart';
 import '../modules/rooms/rooms_view.dart';
 
@@ -26,9 +26,9 @@ class AppPages {
       binding: RoomsBinding(),
     ),
     GetPage(
-      name: _Paths.PLAY,
-      page: () => const PlayView(),
-      binding: PlayBinding(),
+      name: _Paths.GAME,
+      page: () => const GameView(),
+      binding: GameBinding(),
     ),
   ];
 }

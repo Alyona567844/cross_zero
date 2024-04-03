@@ -34,9 +34,15 @@ class HomeView extends GetView<HomeController> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TextField(
+              cursorColor: const Color.fromARGB(255, 193, 150, 21),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
+                  borderSide: const BorderSide(color: Color.fromARGB(255, 193, 150, 21))
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                  borderSide: const BorderSide(color: Color.fromARGB(255, 193, 150, 21))
                 ),
               ),
               controller: controller.textFieldCtlr,
